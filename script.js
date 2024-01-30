@@ -1,5 +1,5 @@
 class Book {
-  // initial data
+  // Initialize book details
   constructor(title, author, ISBN) {
     this.title = title;
     this.author = author;
@@ -8,44 +8,49 @@ class Book {
 }
 
 class Library {
-  constructor(list) {
-    // create empty arr
-    this.list = list || [];
+  constructor(bookList) {
+    // Create an empty array to store books or use the provided list
+    this.bookList = bookList || [];
   }
+
   addBook(newBook) {
-    // uses push method for adding new book
-    this.list.push(newBook);
+    // Utilize the push method to add a new book to the library
+    this.bookList.push(newBook);
   }
-  removeBook(delBook) {
-    // using indexOf to find the index of the book we want to remove, and splice() to remove it
-    for(let book of this.list) {
-      let index = this.list.indexOf(book);
-      if(book === delBook) {
-        this.list.splice(index, 1);
+
+  removeBook(bookToRemove) {
+    // Use indexOf to find the index of the book to be removed and splice() to eliminate it
+    for (let book of this.bookList) {
+      let index = this.bookList.indexOf(book);
+      if (book === bookToRemove) {
+        this.bookList.splice(index, 1);
       }
     }
   }
+
   displayAllBooks() {
-    let i = 1;
-    // show all books
-    for(let book of this.list) {
-      console.log(`${i}) Title: ${book.title} | Author: ${book.author} | ISNB: ${book.ISBN}`);
-      ++i;
+    let indexCounter = 1;
+    // Display details of all books in the library
+    for (let book of this.bookList) {
+      console.log(`${indexCounter}) Title: ${book.title} | Author: ${book.author} | ISBN: ${book.ISBN}`);
+      ++indexCounter;
     }
   }
 }
 
-// create new books
-const newBook1 = new Book("Da", "DADA", "1332423");
-const newBook2 = new Book("dadada", "dada", "python");
-// create new library
-const lib = new Library();
-// add 1 and 2 new books
-lib.addBook(newBook1);
-lib.addBook(newBook2);
-// remove one of them
-lib.removeBook(newBook1)
-// display all
-lib.displayAllBooks();
+// Create new instances of books
+const newBook1 = new Book("MDMA", "ltc", "btc");
+const newBook2 = new Book("botanica", "gay", "p2p");
 
+// Create a new library
+const library = new Library();
 
+// Add the new books to the library
+library.addBook(newBook1);
+library.addBook(newBook2);
+
+// Remove one of the books
+library.removeBook(newBook1);
+
+// Display all books in the library
+library.displayAllBooks();
